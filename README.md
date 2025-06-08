@@ -1,6 +1,6 @@
 # 🎯 3D Typing Test - WebGL Build
 
-This is a **simple 3D Typing Test** built in **Unity 3D**, available to play directly in the browser via WebGL.
+This is a **Simple 3D Typing Test** built in **Unity 3D**, available to play directly in the browser via WebGL.
 
 📅 **Project Development Date:** June 2025
 
@@ -24,11 +24,4 @@ An interactive 3D Typing Test where letters appear as **3D alphabet models**. Us
 
 ## ▶️ Play It Online
 
-> 🔗 [Click here to play the WebGL build](#)  
-*(Replace `#` with your GitHub Pages or web-hosted link)*
-
----
-
-## 📁 Repository Contents
-
-Since this repo contains only the WebGL build, you will find:
+> 🔗 [Click here to play the WebGL build](#)
