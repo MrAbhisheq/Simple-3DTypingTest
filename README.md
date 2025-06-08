@@ -2,7 +2,7 @@
 
 This is a **simple 3D Typing Test** built in **Unity 3D**, available to play directly in the browser via WebGL.
 
-📅 **Project Development Date:** June 2025
+📅 **Project Development Date:** March 2024
 
 ---
 
