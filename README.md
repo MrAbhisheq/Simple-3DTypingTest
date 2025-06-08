@@ -2,7 +2,7 @@
 
 This is a **simple 3D Typing Test** built in **Unity 3D**, available to play directly in the browser via WebGL.
 
-📅 **Project Development Date:** June 2025
+📅 **Project Development Date:** March 2024
 
 ---
 
@@ -24,4 +24,4 @@ An interactive 3D Typing Test where letters appear as **3D alphabet models**. Us
 
 ## ▶️ Play It Online
 
-> 🔗 [Click here to play the WebGL build](https://mrabhisheq.github.io)
+> 🔗 [Click here to play the WebGL build](https://mrabhisheq.github.io/Simple-3DTypingTest)
