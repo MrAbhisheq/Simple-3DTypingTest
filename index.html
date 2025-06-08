@@ -1,123 +1,104 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | 3D Typing Test</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">3D Typing Test</div>
-      </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>3D Typing Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: #222;
+      font-family: sans-serif;
+    }
+
+    #unity-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    #loading-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    #logo {
+      max-width: 200px;
+    }
+
+    #project-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #progress-bar {
+      width: 300px;
+      height: 20px;
+      background: #444;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #4CAF50;
+      transition: width 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas"></canvas>
+    <div id="loading-box">
+      <img id="logo" src="logo.png" alt="Logo" />
+      <div id="project-title">3D Typing Test</div>
+      <div id="progress-bar"><div id="progress-fill"></div></div>
     </div>
-    <script>
+  </div>
 
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
-  
-        
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+  <!-- Unity loader script: MUST be included to define createUnityInstance -->
+  <script src="Build/68f4db3824cf87a9966f0e5a341742d9.loader.js"></script>
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WebGL Build.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/WebGL Build.data",
-        frameworkUrl: buildUrl + "/WebGL Build.framework.js",
-        codeUrl: buildUrl + "/WebGL Build.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "ABHISHEK",
-        productName: "3D Typing Test",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      };
+  <script>
+    const buildUrl = "Build";
+    const config = {
+      dataUrl: buildUrl + "/e99dca91df89642bb8c1cd2852750520.data",
+      frameworkUrl: buildUrl + "/ee044c09ec5ba0c99884c502d98b3495.framework.js",
+      codeUrl: buildUrl + "/7cf9e129f42d1192f91eec7e28f63306.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "ABHISHEK",
+      productName: "3D Typing Test",
+      productVersion: "0.1",
+    };
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+    const canvas = document.getElementById("unity-canvas");
+    const loadingBox = document.getElementById("loading-box");
+    const progressFill = document.getElementById("progress-fill");
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
-
-
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
-      document.body.appendChild(script);
-
-    </script>
-  </body>
+    createUnityInstance(canvas, config, (progress) => {
+      progressFill.style.width = (progress * 100) + "%";
+    }).then((unityInstance) => {
+      loadingBox.style.display = "none";
+    }).catch((message) => {
+      alert(message);
+    });
+  </script>
+</body>
 </html>
