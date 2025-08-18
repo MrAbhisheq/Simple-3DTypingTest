@@ -25,3 +25,5 @@ An interactive 3D Typing Test where letters appear as **3D alphabet models**. Us
 ## ▶️ Play It Online
 
 > 🔗 [Click here to play the WebGL build](https://mrabhisheq.github.io/Simple-3DTypingTest)
+
+![Profile view counter on GitHub](https://komarev.com/ghpvc/?username=MrAbhisheq)
