@@ -22,6 +22,15 @@ An interactive 3D Typing Test where letters appear as **3D alphabet models**. Us
 
 ---
 
+## 📸 Screenshots
+
+![](Screenshots/SimpleTypingTest3D_1.png)
+![](Screenshots/SimpleTypingTest3D_2.png)
+![](Screenshots/SimpleTypingTest3D_3.png)
+![](Screenshots/SimpleTypingTest3D_4.png)
+
+---
+
 ## ▶️ Play It Online
 
 > 🔗 [Click here to play the WebGL build](https://mrabhisheq.github.io/Simple-3DTypingTest)
